@@ -1,6 +1,8 @@
 ## Two Button Game
 ## Rob Miles
 ## Version 1.0
+## Find instructions for Connected Little Boxes configuration here:
+## https://www.connectedlittleboxes.com/projects.html
 
 import time
 import random
@@ -49,16 +51,15 @@ if version=="CLB":
             mqtthost="put MQTT host here"
             mqttuser="put MQTT username here"
             mqttpwd="put MQTT password here"
-            # name for this device
-            mqttdevice="clb-host"
+            self.red_button = "put red button CLB address here"
+            self.blue_button = "put blue button CLB address here"
+            mqttdevice="put server name CLB address here"
             self.client = mqtt.Client(mqttdevice)
             self.client.username_pw_set(mqttuser, mqttpwd)
             self.client.on_connect = self.connected
             self.client.on_message=self.on_message
             self.client.connect(mqtthost, port=1883)
             self.client.loop_start()
-            self.red_button = "red"
-            self.blue_button = "blue"
             self.mqtt_prefix = "lb/command/"
             self.red_down_flag=False
             self.blue_down_flag=False
